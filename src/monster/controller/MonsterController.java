@@ -5,7 +5,7 @@ import java.util.*;
 public class MonsterController {
 	public void start() {
 		MarshmallowMonster sample = new MarshmallowMonster("World Ender",2,4,3,true);
-		System.out.println(sample + "\n");
+		System.out.println(sample);
 		System.out.println("He ate his own bloops!" + "\n");
 		sample.setHasBloop(false);
 		System.out.println(sample);
@@ -13,17 +13,54 @@ public class MonsterController {
 	}
 	public void scanner(MarshmallowMonster currentMonster) {
 		Scanner in = new Scanner(System.in);
-		System.out.println(currentMonster.getName() + " wants know what to eat next.");
-		System.out.print("World ender wants to eat his own arms, how many should he eat: ");
-		int inp = in.nextInt();
-		System.out.println("");
-		int logic = currentMonster.getArmCount() - inp;
-		if (logic < 0) {
-			System.out.println("He can't eat that many arms!");
+		int inpNum = 0;
+		int con = 0;
+		while(con == 0) {
+			System.out.print("What do you want to eat: ");
+			String inp = in.nextLine();
+			if (inp.contains("eye")) {
+				System.out.println("\n" + "I have " + currentMonster.getEyeCount() + " " + inp);
+				System.out.print("\n" + "How much of " + inp + " do you want to eat: ");
+				inpNum = in.nextInt();	
+				int negEye = currentMonster.getEyeCount() - inpNum;
+				if (negEye >= 0) {
+					System.out.println(currentMonster.getName() + " ate his own " + inp + " He now have " + negEye + " eyes." + "\n");
+					currentMonster.setEyeCount(negEye);
+				}
+				else {
+					System.out.println("You can't do that!" + "\n");
+				}
+			}
+			
+			else if (inp.contains("arm")) {
+				System.out.println("\n" + "I have " + currentMonster.getArmCount() + " " +inp);
+				System.out.print("\n" + "How much of " + inp + " do you want to eat: ");
+				inpNum = in.nextInt();
+				int negArm = currentMonster.getArmCount() - inpNum;
+				if (negArm >= 0 ) {
+					System.out.println(currentMonster.getName() + " ate his own " + inp + " He now have " + negArm + " arms" + "\n");
+					currentMonster.setArmCount(negArm);
+				}
+				else {
+					System.out.println("You can't do that!" + "\n");
+				}
+			}
+			
+			else if (inp.contains("tentacle")) {
+				System.out.print("\n" + "How much of " + inp + " do you want to eat: ");
+				inpNum = in.nextInt();
+				double negTent = currentMonster.getTentacleAmount() - inpNum;
+				if (negTent >= 0) {
+					System.out.println(currentMonster.getName() + " ate his own " + inp + " He now have " + negTent + " tentacles" + "\n");
+					currentMonster.setTentacleAmount(negTent);
+				}
+				else {
+					System.out.println("You can't do that!");
+				}
+			}
+			else {
+				System.out.println("What the heck");
+			}
 		}
-		else {
-			currentMonster.setArmCount(currentMonster.getArmCount() - inp);
-			System.out.println("Now " + currentMonster.getName() + " have " + currentMonster.getArmCount() + " arms.");
-		}
-	}
+	}	
 }

@@ -52,7 +52,7 @@ public class MarshmallowMonster {
 	public String toString() {
 		String desc =  "Greetings Traveler, please end my suffering. My name is " + name +" and I have have " + eyeCount;
 		desc += " eyes and I have " + armCount + " arms, and I have " + tentacleAmount + " tentacles, and my bloop existance is " + hasBloop;
-		desc += ". Please end me!";
+		desc += ". Please end me!" + "\n";
 		return desc;
 	}
 }
