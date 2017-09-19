@@ -1,8 +1,12 @@
 package monster.controller;
 import monster.model.MarshmallowMonster;
 import java.util.*;
-
+import mosnter.view.monsterDisplay;
 public class MonsterController {
+	private monsterDisplay popup;
+	public MonsterController() {
+		popup = new monsterDisplay();
+		}
 	public void start() {
 		MarshmallowMonster sample = new MarshmallowMonster("World Ender",2,4,3,true);
 		System.out.println(sample);
@@ -61,6 +65,9 @@ public class MonsterController {
 			else {
 				System.out.println("What the heck");
 			}
+			popup.displayText("How ya doing");
+			String answer = popup.getResponse("Watchu eating for lunch?");
+			popup.displayText(answer);
 		}
 	}	
 }
