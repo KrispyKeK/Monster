@@ -19,6 +19,7 @@ public class MarshmallowMonster {
 		this.tentacleAmount = tentacleAmount;
 		this.hasBloop = hasBloop;
 	}
+	//just a crap ton of getters and s
 	public String getName() {
 		return name;
 	}
@@ -49,6 +50,7 @@ public class MarshmallowMonster {
 	public void setHasBloop(boolean hasBloop) {
 		this.hasBloop = hasBloop;
 	}
+	//a method to convert stuff in senteces to display to the user
 	public String toString() {
 		String desc =  "Greetings Traveler, please end my suffering. My name is " + name +" and I have have " + eyeCount;
 		desc += " eyes and I have " + armCount + " arms, and I have " + tentacleAmount + " tentacles, and my bloop existance is " + hasBloop;
