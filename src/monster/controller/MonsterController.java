@@ -31,9 +31,9 @@ public class MonsterController {
 		sample.setHasBloop(false);
 //		System.out.println(sample);
 		popup.displayText(sample.toString());
+		testList();
 		scanner(sample);
 		monsterList.add(sample);
-		testList();
 	}
 	private void testList() {
 		for (int i = 0; i < monsterList.size(); i++) {
@@ -42,6 +42,11 @@ public class MonsterController {
 			String newName = popup.getResponse("What should my name be? ");
 			currentMonster.setName(newName);
 			popup.displayText("My new name is " + currentMonster.getName());
+		}
+		for(MarshmallowMonster current: monsterList) {
+			popup.displayText(current.getName());
+			String newName = popup.getResponse("What name do you want: ");
+			current.setName(newName);
 		}
 	}
 	//a method to interact with the monster
