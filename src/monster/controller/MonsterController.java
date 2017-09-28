@@ -7,12 +7,23 @@ import java.util.*;
 import mosnter.view.monsterDisplay;
 public class MonsterController {
 	private monsterDisplay popup;
+	private List<MarshmallowMonster> monsterList;
 	//basically creating a keyword for popup window named popup
 	public MonsterController() {
 		popup = new monsterDisplay();
+		monsterList = new ArrayList<MarshmallowMonster>();
 		}
 	//just another start method
 	public void start() {
+		boolean finished = true;
+		while(finished) {
+			popup.displayText("Neat");
+			finished = false;
+		}
+		for(int i = 0; i < 5; i++) {
+			System.out.println("Greetings Traveler");
+			popup.displayText("Greeting Traveler");
+		}
 		MarshmallowMonster sample = new MarshmallowMonster("World Ender",2,4,3,true);
 		System.out.println(sample);
 //		System.out.println("He ate his own bloops!" + "\n");
@@ -21,9 +32,20 @@ public class MonsterController {
 //		System.out.println(sample);
 		popup.displayText(sample.toString());
 		scanner(sample);
+		monsterList.add(sample);
+		testList();
+	}
+	private void testList() {
+		for (int i = 0; i < monsterList.size(); i++) {
+			MarshmallowMonster currentMonster = monsterList.get(i);
+			popup.displayText(currentMonster.getName());
+			String newName = popup.getResponse("What should my name be? ");
+			currentMonster.setName(newName);
+			popup.displayText("My new name is " + currentMonster.getName());
+		}
 	}
 	//a method to interact with the monster
-	public void scanner(MarshmallowMonster currentMonster) {
+	private void scanner(MarshmallowMonster currentMonster) {
 		Scanner in = new Scanner(System.in);
 		//integers that maintain the code as well
 		int con = 0;
@@ -96,9 +118,13 @@ public class MonsterController {
 					System.out.println("You can't do that!");
 				}
 			}
+			else if(inp.contains("stop")) {
+				con++;
+			}
 			else {
 				System.out.println("What the heck");
 				popup.displayText("Yo mang, stop this nonsense");
+				con++;
 			}
 		}		
 		// just a fun pop up
