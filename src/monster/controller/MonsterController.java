@@ -93,6 +93,7 @@ public class MonsterController {
 				String numYeTwo = popup.getResponse("How much of " + inp + " do you want to eat: ");
 				try {
 					inpNum = Integer.parseInt(numYeTwo);
+					isValidDouble(numYeTwo);
 				}
 				catch(Exception E) {
 					System.out.println("Really kid?");
